@@ -2,21 +2,18 @@
 {
     public class Beer
     {
-        private static int IdCounter = 0;
-        public Beer()
-        {
-            IdCounter++;
-            Id = IdCounter;
-        }
-        public int Id { get; private set; }
+
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string Sort { get; set; }
 
         public string Country { get; set; }
 
-        public double Volume { get; set; }
+        public double Volume { get; set; } //.мл
 
-        public double SpirtVolume { get; set; }
+        public double SpirtVolume { get; set; }//%
+
+        public double Price { get; set; }
     }
 }
