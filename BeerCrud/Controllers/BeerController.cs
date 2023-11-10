@@ -15,10 +15,47 @@ namespace BeerCrud.Controllers
 
         public BeerController()
         {
-            PostBeer("Балтика 7", "Светлый лагер", "Россия", 450, 5.4, 57);
+            PostBeer(new Beer
+            {
+                Name = "Балтика 7",
+                Sort = "Светлый лагер",
+                Country = "Россия",
+                Volume = 450,
+                SpirtVolume = 5.4,
+                Price = 57
+            });
+            PostBeer(new Beer
+            {
+                Name = "Corona Extra",
+                Sort = "Светлый лагер",
+                Country = "Мексика",
+                Volume = 355,
+                SpirtVolume = 4.5,
+                Price = 134.99
+            });
+            PostBeer(new Beer
+            {
+                Name = "Guinness",
+                Sort = "Стаут",
+                Country = "Ирландия",
+                Volume = 440,
+                SpirtVolume = 4.1,
+                Price = 223
+            });
+            PostBeer(new Beer
+            {
+                Name = "Krusovice",
+                Sort = "Темный лагер",
+                Country = "Чехия",
+                Volume = 430,
+                SpirtVolume = 4.1,
+                Price = 85
+            });
+            /*
             PostBeer("Corona Extra", "Светлый лагер", "Мексика", 355, 4.5, 134.99);
             PostBeer("Guinness", "Стаут", "Ирландия", 440, 4.1, 223);
             PostBeer("Krusovice", "Темный лагер", "Чехия", 430, 4.1, 85);
+            */
         }
 
 
@@ -35,10 +72,9 @@ namespace BeerCrud.Controllers
         }
 
         [HttpPut("/beer/{id}")]
-        public Beer UpdateBeer(int id, string name, string sort, string country, double volume, double spirtVolume, double price)
+        public Beer UpdateBeer(int id, Beer beer)
         {
             beers.RemoveAt(id);
-            Beer beer = new Beer {Id = id, Name = name, Sort = sort, Country = country, Volume = volume, SpirtVolume = spirtVolume, Price = price };
             beers.Add(beer);
             return beer;
         }
@@ -56,10 +92,10 @@ namespace BeerCrud.Controllers
         }
 
         [HttpPost("/beer")]
-        public Beer PostBeer(string name, string sort, string country, double volume, double spirtVolume, double price)
+        public Beer PostBeer(Beer beer)
         {
             _id++;
-            Beer beer = new Beer {Id = _id, Name = name, Sort = sort, Country = country, Volume = volume, SpirtVolume = spirtVolume, Price = price };
+            beer.Id = _id;
             beers.Add(beer);
             return beer;
         }
