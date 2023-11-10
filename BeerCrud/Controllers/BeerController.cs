@@ -6,6 +6,7 @@ namespace BeerCrud.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Produces("application/json")]
     public class BeerController : ControllerBase
     {
         private int _id = 0;
